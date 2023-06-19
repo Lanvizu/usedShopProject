@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postWrite</title>
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/top.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="top">
+    <a class="mainPage" href="/mainPage">MainPage</a><br>
+    <div class="between">
+        <div class="button_div">
+            <a class="button" href="/post/write">판매 등록</a>
+        </div>
+        <div>
+            <a class="member" th:href="@{|/member/${member.memberId}|}">
+                <img class="topImg-profile" alt="프로필 사진" th:src="'/profileImg/' + ${member.memberImageName}">
+                <span class="userID main-top-id point-span" th:text="${member.nickname}">asdf</span>
+            </a>
+            <a class="logout" href="/logout"> 로그아웃</a>
+        </div>
+    </div>
+</div>
+<main>
+    <div class="basic">
+        <form class="form-post" action="/post/write" method="post" th:object="${PostSaveForm}" enctype="multipart/form-data">
+            <input class="margin-bottom" type="file" name="files" multiple>
+            <input class="input-product" type="text" id="name" name="name" placeholder="판매 물건을 입력하세요">
+            <input class="input-product" type="number" id="registrationPrice" name="registrationPrice" placeholder="판매 가격을 입력하세요">
+
+            <textarea class="textarea-update" id="text" name="text"></textarea>
+            <div class="modify_button" >
+                <button type="submit">작성</button>
+            </div>
+        </form>
+    </div>
+</main>
+</body>
+</html>

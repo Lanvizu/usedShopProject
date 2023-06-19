@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="/css/basic.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form role="form" action="/signUp" method="post" th:object="${memberSaveForm}">
+        <div class="login-label-bottom">
+            <h1 class="login-label">회원 가입</h1>
+        </div>
+            <label for="nickname">닉네임</label>
+            <input class="input" type="text" th:field="*{nickname}"
+                   id="nickname" name="nickname" placeholder="아이디를 입력하세요">
+
+            <label for="name">이름</label>
+            <input class="input" type="text" th:field="*{name}"
+                   id="name" name="name" placeholder="이름을 입력하세요">
+
+            <label for="password">비밀번호</label>
+            <input class="input" th:field="*{password}" type="text"
+                   id="password" name="password" placeholder="비밀번호를 입력하세요">
+
+            <label for="email">이메일</label>
+            <input class="input" type="email" th:field="*{email}"
+                   id="email" name="email" placeholder="email을 입력하세요">
+
+            <label for="phoneNumber">전화번호</label>
+            <input class="input" type="text" th:field="*{phoneNumber}"
+                   id="phoneNumber" name="phoneNumber" placeholder="전화번호를 입력하세요">
+
+        <br>
+        <button class="input-submit" type="submit"> 가입 </button>
+    </form>
+<div class="basic">
+    <a href="/">계정이 있으신가요?</a>
+</div>
+</body>
+</html>

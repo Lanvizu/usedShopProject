@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>auctionPage</title>
+  <link href="/css/main.css" rel="stylesheet" type="text/css" />
+  <link href="/css/top.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="top">
+  <a class="mainPage" href="/mainPage">MainPage</a><br>
+  <div class="between">
+    <div class="button_div">
+      <a class="button" href="/post/write">판매 등록</a>
+    </div>
+    <div>
+      <a class="member" th:href="@{|/member/${member.memberId}|}">
+        <img class="topImg-profile" alt="프로필 사진" th:src="'/profileImg/' + ${member.memberImageName}">
+        <span class="userID main-top-id point-span" th:text="${member.nickname}">asdf</span>
+      </a>
+      <a class="logout" href="/logout"> 로그아웃</a>
+    </div>
+  </div>
+</div>
+<main>
+  <div class="basic">
+    <article>
+      <header>
+        <div class="profile-of-article">
+          <img class="img-profile pic" alt="프로필 사진" th:src="'/profileImg/' + ${post.memberImageName}">
+          <span class="userID main-id point-span" th:text="${post.memberDto.nickname}">asdf</span>
+          <span class="modified-time" th:text="${post.modifiedAt}">10분</span>
+        </div>
+      </header>
+      <div class="main-image" th:each="postFile : ${post.fileDTOS}">
+        <img class="main-pic" alt="이미지 파일"
+             th:src="'/profileImg/' + ${postFile.storeFileName}+ . + ${postFile.extension}">
+      </div>
+
+      <div class="post-margin">
+        <span class="product-name" th:text="${post.productDto.name}">qwer</span><br>
+        <div class="price-status">
+          <div>
+            <span class="registrationPrice" th:text="${post.productDto.registrationPrice}">1234</span> 원
+          </div>
+          <div>
+            <span class="product-status" th:text="${post.productDto.productStatus}">qwer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="basic">
+        <span th:text="${post.text}">qwer</span>
+      </div>
+    </article>
+    <div class="post-margin">
+      <span>즉시 구매가 : <span th:text="${post.productDto.registrationPrice}"></span> 원</span>
+
+      <div th:if="${status}">
+        <div class="margin-bottom">
+          <form th:action="@{|/post/order/${orderId}|}" method="post" >
+            <input class="input-price" type="number" id="updateBidPrice" name="updateBidPrice" th:value="${bidPrice}">
+
+            <button type="submit" name="action" value="update">수정</button>
+            <button type="submit" name="action" value="cancel">취소</button>
+          </form>
+        </div>
+      </div>
+
+      <div th:unless="${status}">
+        <div class="margin-bottom">
+          <form th:action="@{|/post/${postId}|}" th:object="${bidPriceForm}" method="post" >
+            <input class="input-price" type="number" id="bidPrice" name="bidPrice" placeholder="원하는 입찰가를 입력하세요">
+            <button type="submit">확인</button>
+          </form>
+        </div>
+      </div>
+
+      <div>
+        <span>다른 유저의 입찰가</span>
+          <li th:each="order : ${orders}">
+            <span><span th:text="${order.bidPrice}"></span>  원</span>
+        </li>
+      </div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>memberDetail</title>
+  <link href="/css/basic.css" rel="stylesheet" type="text/css" />
+  <link href="/css/top.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="top">
+  <a class="mainPage" href="/mainPage">MainPage</a><br>
+  <div class="between">
+    <div class="button_div">
+      <a class="button" href="/post/write">판매 등록</a>
+    </div>
+    <div>
+      <a class="member" th:href="@{|/member/${member2.memberId}|}">
+        <img class="topImg-profile" alt="프로필 사진" th:src="'/profileImg/' + ${member2.memberImageName}">
+        <span class="userID main-top-id point-span" th:text="${member2.nickname}">asdf</span>
+      </a>
+      <a class="logout" href="/logout"> 로그아웃</a>
+    </div>
+  </div>
+</div>
+  <form action="memberDetail.html" th:action method="post">
+    <div class="text-center">
+
+      <div class="login-label-bottom">
+        <h1 class="login-label">정보 수정</h1>
+      </div>
+
+    <label for="username">회원 이름</label>
+    <input class="input" type="text" id="username" name="username"
+           value="홍길동" th:value="${member.name}" readonly>
+
+    <label for="nickname">회원 ID</label>
+    <input class="input" type="text" id="nickname" name="nickname"
+           value="loginId" th:value="${member.nickname}" readonly>
+
+    <label for="email">email ></label>
+    <input class="input" type="email" id="email" name="email"
+           value="abc@gmail.com" th:value="${member.email}" >
+
+    <label for="phoneNumber">phone ></label>
+    <input class="input" type="text" id="phoneNumber" name="phoneNumber"
+           value="010-1234-5678" th:value="${member.phoneNumber}">
+      <br>
+      <button class="input-submit" type="submit" >저장</button>
+    </div>
+  </form>
+</body>
+</html>

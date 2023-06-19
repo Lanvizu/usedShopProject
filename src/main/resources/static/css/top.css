@@ -1,0 +1,55 @@
+
+.top {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+
+.mainPage {
+    cursor: pointer;
+    color: #000;
+    /*text-decoration: none;*/
+    font-size: 30px;
+}
+.member {
+    cursor: pointer;
+    color: #000;
+    text-decoration: none;
+}
+.between{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.logout {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+
+.button {
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+.button_div{
+    margin-top: 6px;
+}
+
+.topImg-profile {
+    width: 23px;
+    height: 23px;
+    border: 1px solid #fafafa;
+    border-radius: 100%;
+}
+.main-top-id {
+    margin-left: 5px;
+    margin-right: 20px;
+}

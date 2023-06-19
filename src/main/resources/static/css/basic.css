@@ -1,0 +1,113 @@
+
+body {
+    /*font-family: Arial, sans-serif;*/
+    background-color: #f2f2f2;
+}
+
+form {
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 120px;
+}
+
+/*input[type="text"], input[type="password"], input[type="email"],input[type="phoneNumber"] {*/
+/*    width: 50%;*/
+/*    padding: 10px;*/
+/*    margin-bottom: 20px;*/
+/*    border: none;*/
+/*    border-radius: 3px;*/
+/*    background-color: #f9f9f9;*/
+/*    font-size: 16px;*/
+/*    margin-left: 100px;*/
+/*}*/
+.input{
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+}
+.input-detail{
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 3px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+}
+.input-submit{
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 270px;
+}
+
+/*input[type="submit"],button[type="submit"]:hover {*/
+/*    background-color: #45a049;*/
+/*}*/
+
+.basic{
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: block;
+    font-weight: bold;
+    text-align: center;
+}
+.links {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    max-width: 500px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-weight: bold;
+}
+
+.links a {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.links a:hover {
+    background-color: #333;
+    color: #fff;
+}
+.login-label{
+    margin: auto;
+    text-align: center;
+}
+.login-label-bottom{
+    margin-bottom: 40px;
+}
+.text-center{
+    text-align: center;
+}
+.margin-bottom{
+    margin-bottom: 10px;
+}

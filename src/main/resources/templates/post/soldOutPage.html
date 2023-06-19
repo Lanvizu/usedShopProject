@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>auctionPage</title>
+  <link href="/css/main.css" rel="stylesheet" type="text/css" />
+  <link href="/css/top.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="top">
+  <a class="mainPage" href="/mainPage">MainPage</a><br>
+  <div class="between">
+    <div class="button_div">
+      <a class="button" href="/post/write">판매 등록</a>
+    </div>
+    <div>
+      <a class="member" th:href="@{|/member/${member.memberId}|}">
+        <img class="topImg-profile" alt="프로필 사진" th:src="'/profileImg/' + ${member.memberImageName}">
+        <span class="userID main-top-id point-span" th:text="${member.nickname}">asdf</span>
+      </a>
+      <a class="logout" href="/logout"> 로그아웃</a>
+    </div>
+  </div>
+</div>
+<main>
+  <div class="basic">
+    <article>
+      <header>
+        <div class="profile-of-article">
+          <img class="img-profile pic" alt="프로필 사진" th:src="'/profileImg/' + ${post.memberImageName}">
+          <span class="userID main-id point-span" th:text="${post.memberDto.nickname}">asdf</span>
+        </div>
+      </header>
+      <div class="main-image" th:each="postFile : ${post.fileDTOS}">
+        <img class="main-pic" alt="이미지 파일"
+             th:src="'/profileImg/' + ${postFile.storeFileName}+ . + ${postFile.extension}">
+      </div>
+<!--      <div>-->
+<!--        <span th:text="${post.productDto.name}">qwer</span>-->
+<!--        <a th:text="${post.productDto.productStatus}">qwer</a>-->
+<!--      </div>-->
+
+      <div class="post-margin">
+        <div class="price-status">
+          <div>
+            <span class="registrationPrice" th:text="${post.productDto.name}">1234</span>
+          </div>
+          <div>
+            <span class="product-status" th:text="${post.productDto.productStatus}">qwer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="basic">
+        <span th:text="${post.text}">qwer</span>
+      </div>
+    </article>
+
+    <span>즉시 구매가 : <span th:text="${post.productDto.registrationPrice}"></span> 원</span>
+    <div>
+      <span> 해당 제품은 이미 판매 완료되었습니다.</span><br>
+      <span>판매가 : <span th:text="${salePrice}"></span> 원</span>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>

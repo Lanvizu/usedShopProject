@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/basic.css" rel="stylesheet" type="text/css" />
+    <link href="/css/top.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="top">
+    <a class="mainPage" href="/mainPage">MainPage</a><br>
+    <div class="between">
+        <div class="button_div">
+            <a class="button" href="/post/write">판매 등록</a>
+        </div>
+        <div>
+            <a class="member" th:href="@{|/member/${member.memberId}|}">
+                <img class="topImg-profile" alt="프로필 사진" th:src="'/profileImg/' + ${member.memberImageName}">
+                <span class="userID main-top-id point-span" th:text="${member.nickname}">asdf</span>
+            </a>
+            <a class="logout" href="/logout"> 로그아웃</a>
+        </div>
+    </div>
+</div>
+
+<form method="POST" enctype="multipart/form-data"
+      th:action="@{/member/{memberId}/editImage(memberId=${memberId})}">
+    <div class="login-label-bottom">
+        <h1 class="login-label">프로필이미지 수정</h1>
+    </div>
+    <div class="basic">
+        <img class="margin-bottom" th:src="'/profileImg/' + ${member.memberImageName}">
+        <input type="file" name="imageFile">
+    </div>
+
+        <button class="input-submit" type="submit">변경</button>
+
+</form>
+</body>
+</html>

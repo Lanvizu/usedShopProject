@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>아이디 찾기</title>
+  <link href="/css/basic.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<form action="/findNickname" method="post">
+  <div class="login-label-bottom">
+    <h1 class="login-label">아이디 찾기</h1>
+  </div>
+  <label for="email">이메일을 입력하세요.</label>
+  <input class="input" type="text" id="email" name="email" required>
+  <input class="input-submit" type="submit" value="다음">
+</form>
+
+<div class="basic" th:if="${nickname}">
+  등록된 아이디는 <span th:text="${nickname}"></span> 입니다.
+</div>
+<div class="basic" th:unless="${nickname}">
+  아이디가 없습니다.
+</div>
+<div class="basic">
+  <a class="option" href="/">로그인</a>
+</div>
+</body>
+</html>

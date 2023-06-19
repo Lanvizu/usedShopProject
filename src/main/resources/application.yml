@@ -1,0 +1,49 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/usedshop
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+  # show_sql: true
+        format_sql: true
+    open-in-view: false
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ghzm888@gmail.com
+    password: jlkvaigkrqmsfozz
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+  security:
+    user:
+      name: root
+      password: root
+      roles: ADMIN
+
+
+
+#
+#logging.level:
+#  org.hibernate:
+#    SQL: debug
+#    type: trace
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
+
+file:
+  dir: D:/usedshop_imgfile/profileImg/
