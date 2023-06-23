@@ -10,11 +10,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import toymay.usedshop.file.FileDto;
+import toymay.usedshop.common.exception.form.CustomFormException;
 import toymay.usedshop.member.controller.dto.LoginMemberDto;
 import toymay.usedshop.member.controller.dto.MailDto;
 import toymay.usedshop.member.controller.dto.MemberSaveForm;
-import toymay.usedshop.member.entity.MemberImage;
 import toymay.usedshop.member.service.MemberDto;
 import toymay.usedshop.member.service.MemberService;
 import toymay.usedshop.member.service.PasswordDto;
@@ -45,15 +44,30 @@ public class MemberController {
 
     @PostMapping("/signUp")
     public String signUp(@Valid MemberSaveForm form, BindingResult result) {
+        try {
+            if (!result.hasFieldErrors()){
+                memberService.join(new MemberDto(
+                        form.getName(),
+                        form.getNickname(),
+                        form.getPassword(),
+                        form.getEmail(),
+                        form.getPhoneNumber()));
+            }
+        } catch (CustomFormException e) {
+            result.rejectValue(e.getField(), e.getErrorCode(), e.getMessage());
+        }
         if (result.hasErrors()) {
             return ("member/signUp");
         }
-        MemberDto memberDto = new MemberDto(form.getName(), form.getNickname(),
-                form.getPassword(), form.getEmail(), form.getPhoneNumber());
-        memberService.join(memberDto);
-
         return ("redirect:/");
     }
+//        if (result.hasErrors()) {
+//            return ("member/signUp");
+//        }
+//        MemberDto memberDto = new MemberDto(form.getName(), form.getNickname(),
+//                form.getPassword(), form.getEmail(), form.getPhoneNumber());
+//        memberService.join(memberDto);
+
 
     @GetMapping("/findPassword")
     public String findPassword() {

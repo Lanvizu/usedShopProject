@@ -3,13 +3,11 @@ package toymay.usedshop.post.service;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import toymay.usedshop.file.FileDto;
+import toymay.usedshop.common.file.FileDto;
 import toymay.usedshop.post.entity.Post;
-import toymay.usedshop.post.entity.PostFile;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter

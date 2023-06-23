@@ -2,7 +2,7 @@ package toymay.usedshop.product.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import toymay.usedshop.file.FileDto;
+import toymay.usedshop.common.file.FileDto;
 import toymay.usedshop.post.entity.Post;
 import toymay.usedshop.post.service.PostDto;
 import toymay.usedshop.product.entity.Product;

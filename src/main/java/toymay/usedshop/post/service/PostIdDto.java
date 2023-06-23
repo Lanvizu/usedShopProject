@@ -3,13 +3,11 @@ package toymay.usedshop.post.service;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import toymay.usedshop.common.Chrono;
-import toymay.usedshop.file.FileDto;
+import toymay.usedshop.common.file.FileDto;
 import toymay.usedshop.member.service.MemberDto;
 import toymay.usedshop.post.entity.Post;
-import toymay.usedshop.product.entity.Product;
 import toymay.usedshop.product.service.ProductDto;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

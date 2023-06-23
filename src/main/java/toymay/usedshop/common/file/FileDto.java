@@ -1,11 +1,9 @@
-package toymay.usedshop.file;
+package toymay.usedshop.common.file;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import toymay.usedshop.member.entity.Member;
 import toymay.usedshop.member.entity.MemberImage;
-import toymay.usedshop.member.service.MemberDto;
 import toymay.usedshop.post.entity.PostFile;
 
 import java.util.List;

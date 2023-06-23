@@ -1,24 +1,20 @@
 package toymay.usedshop.post.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import toymay.usedshop.file.FileDto;
-import toymay.usedshop.file.FileManager;
+import toymay.usedshop.common.file.FileDto;
+import toymay.usedshop.common.file.FileManager;
 import toymay.usedshop.member.controller.dto.LoginMemberDto;
-import toymay.usedshop.member.service.MemberDto;
 import toymay.usedshop.member.service.MemberService;
 import toymay.usedshop.order.controller.dto.BidPriceForm;
 import toymay.usedshop.order.controller.dto.OrderIdDto;
-import toymay.usedshop.order.repository.OrderRepository;
 import toymay.usedshop.order.service.OrderDto;
 import toymay.usedshop.order.service.OrderService;
 import toymay.usedshop.post.controller.dto.PostSaveForm;
-import toymay.usedshop.post.entity.Post;
 import toymay.usedshop.post.service.PostDto;
 import toymay.usedshop.post.service.PostIdDto;
 import toymay.usedshop.post.service.PostService;
@@ -26,7 +22,6 @@ import toymay.usedshop.product.entity.ProductStatus;
 import toymay.usedshop.product.service.ProductDto;
 import toymay.usedshop.product.service.ProductService;
 
-import java.io.IOException;
 import java.util.List;
 
 @Controller

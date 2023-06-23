@@ -1,7 +1,6 @@
 package toymay.usedshop.member.service;
 
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.core.Authentication;
@@ -10,8 +9,9 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
-import toymay.usedshop.file.FileDto;
-import toymay.usedshop.file.FileManager;
+import toymay.usedshop.common.exception.form.signUp.DuplicateNicknameException;
+import toymay.usedshop.common.file.FileDto;
+import toymay.usedshop.common.file.FileManager;
 import toymay.usedshop.member.controller.dto.MailDto;
 import toymay.usedshop.member.entity.Member;
 import toymay.usedshop.member.entity.MemberImage;
@@ -19,10 +19,10 @@ import toymay.usedshop.member.entity.Privacy;
 import toymay.usedshop.member.repository.MemberRepository;
 import toymay.usedshop.security.UserDetail;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.UUID;
+
+import static toymay.usedshop.common.exception.form.FormExceptionType.*;
 
 @Service
 @Transactional(readOnly = true)
@@ -53,9 +53,14 @@ public class MemberService {
         Optional<Member> findPhoneNumber = memberRepository.findByPrivacyPhoneNumber(phoneNumber);
         Optional<Member> findEmail = memberRepository.findByPrivacyEmail(email);
 
-        if (findNickname.isPresent() || findPhoneNumber.isPresent() || findEmail.isPresent()) {
-            throw new IllegalStateException("이미 존재하는 회원입니다");
+        if (findNickname.isPresent()){
+            throw DUPLICATE_NICKNAME.getException();
+        } else if(findEmail.isPresent()){
+            throw DUPLICATE_EMAIL.getException();
+        } else if (findPhoneNumber.isPresent()) {
+            throw DUPLICATE_PHONE_NUMBER.getException();
         }
+
     }
 
     public Long login(String nickname, String password) {

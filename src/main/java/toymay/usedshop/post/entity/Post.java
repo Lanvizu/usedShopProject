@@ -3,18 +3,13 @@ package toymay.usedshop.post.entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import toymay.usedshop.common.BaseEntity;
-import toymay.usedshop.file.FileDto;
 import toymay.usedshop.member.entity.Member;
-import toymay.usedshop.member.entity.MemberImage;
 import toymay.usedshop.product.entity.Product;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Getter

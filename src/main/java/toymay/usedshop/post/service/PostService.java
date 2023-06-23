@@ -3,8 +3,7 @@ package toymay.usedshop.post.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import toymay.usedshop.file.FileDto;
-import toymay.usedshop.file.FileManager;
+import toymay.usedshop.common.file.FileManager;
 import toymay.usedshop.member.controller.dto.LoginMemberDto;
 import toymay.usedshop.member.entity.Member;
 import toymay.usedshop.member.repository.MemberRepository;
@@ -12,7 +11,6 @@ import toymay.usedshop.post.entity.Post;
 import toymay.usedshop.post.entity.PostFile;
 import toymay.usedshop.post.repository.PostRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

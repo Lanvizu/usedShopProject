@@ -1,9 +1,9 @@
-package toymay.usedshop.file;
+package toymay.usedshop.common.file;
 
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
+import toymay.usedshop.common.file.FileDto;
 
 import java.io.File;
 import java.io.IOException;

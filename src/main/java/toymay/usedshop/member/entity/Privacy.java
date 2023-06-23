@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 
+import static toymay.usedshop.common.exception.form.FormExceptionType.INVALID_EMAIL;
+import static toymay.usedshop.common.exception.form.FormExceptionType.INVALID_PHONE_NUMBER;
+
 @Embeddable
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -25,32 +28,37 @@ public class Privacy {
         privacy.setEmail(email);
         return privacy;
     }
-
-//    public void updatePassword(String newPassword) {
-//        this.password = newPassword;
-//    }
-
-//    public void updateEmailAndPhoneNumber(String email, String phoneNumber) {
-//        this.email = email;
-//        this.phoneNumber = phoneNumber;
-//    }
-
     public void setPassword(String password) {
         this.password = password;
     }
+
     public void setPhoneNumber(String phoneNumber) {
+        validatePhoneNumber(phoneNumber);
         this.phoneNumber = phoneNumber;
     }
+
     public void setEmail(String email) {
+        validateEmail(email);
         this.email = email;
     }
-//    private void setPassword(String password) {
-//        this.password = password;
-//    }
-//    private void setPhoneNumber(String phoneNumber) {
-//        this.phoneNumber = phoneNumber;
-//    }
-//    private void setEmail(String email) {
-//        this.email = email;
-//    }
+
+    private void validateEmail(String email){
+        if(!isEmail(email)){
+            throw INVALID_EMAIL.getException();
+        }
+    }
+
+    private void validatePhoneNumber(String phoneNumber) {
+         if (!isPhoneNumber(phoneNumber)) {
+            throw INVALID_PHONE_NUMBER.getException();
+        }
+    }
+
+    public static boolean isEmail(String email) {
+        return email.matches("^[A-Za-z\\d_.-]+@(.+)$");
+    }
+
+    public static boolean isPhoneNumber(String phoneNumber) {
+        return phoneNumber.matches("\\d{9,11}");
+    }
 }
