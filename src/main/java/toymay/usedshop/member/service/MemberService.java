@@ -74,8 +74,9 @@ public class MemberService {
     }
 
     private Member findByNicknameOrThrow(String nickname) {
-        return memberRepository.findByNickname(nickname)
-                .orElseThrow();
+        Member member = memberRepository.findByNickname(nickname)
+                .orElseThrow(NOT_FOUND_ACCOUNT_BY_NICKNAME::getException);
+        return member;
     }
 
     @Transactional
@@ -133,8 +134,9 @@ public class MemberService {
     }
 
     public String findNicknameByEmail(String email) {
-        Member member = memberRepository.findByPrivacyEmail(email).orElseThrow();
-        //exception 처리 -> 없는 이메일일 경우
+        Member member = memberRepository.findByPrivacyEmail(email)
+                .orElseThrow(NOT_FOUND_ACCOUNT_BY_Email::getException);
+        //정보 전부를 보내주지않고 nickname 만 보내주는중.
         return member.getNickname();
     }
 

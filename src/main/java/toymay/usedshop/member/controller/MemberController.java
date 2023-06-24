@@ -36,6 +36,7 @@ public class MemberController {
         return ("member/main");
     }
 
+
     @GetMapping("/signUp")
     public String signUpPage(Model model) {
         model.addAttribute("memberSaveForm", new MemberSaveForm());
@@ -44,42 +45,21 @@ public class MemberController {
 
     @PostMapping("/signUp")
     public String signUp(@Valid MemberSaveForm form, BindingResult result) {
+        if (result.hasErrors()) {
+            return "member/signUp";
+        }
         try {
-            if (!result.hasFieldErrors()){
-                memberService.join(new MemberDto(
-                        form.getName(),
-                        form.getNickname(),
-                        form.getPassword(),
-                        form.getEmail(),
-                        form.getPhoneNumber()));
-            }
+            memberService.join(new MemberDto(
+                    form.getName(),
+                    form.getNickname(),
+                    form.getPassword(),
+                    form.getEmail(),
+                    form.getPhoneNumber()));
+            return "redirect:/";
         } catch (CustomFormException e) {
             result.rejectValue(e.getField(), e.getErrorCode(), e.getMessage());
         }
-        if (result.hasErrors()) {
-            return ("member/signUp");
-        }
-        return ("redirect:/");
-    }
-//        if (result.hasErrors()) {
-//            return ("member/signUp");
-//        }
-//        MemberDto memberDto = new MemberDto(form.getName(), form.getNickname(),
-//                form.getPassword(), form.getEmail(), form.getPhoneNumber());
-//        memberService.join(memberDto);
-
-
-    @GetMapping("/findPassword")
-    public String findPassword() {
-        return ("member/findPassword");
-    }
-
-    @PostMapping("/findPassword")
-    public String sendEmail(@RequestParam("nickname") String nickname) {
-        String email = memberService.findEmailByNickname(nickname);
-        MailDto dto = memberService.createMailAndChangePassword(email);
-        memberService.mailSend(dto);
-        return "redirect:/";
+        return "member/signUp";
     }
 
     @GetMapping("/findNickname")
@@ -89,13 +69,33 @@ public class MemberController {
 
     @PostMapping("/findNickname")
     public String findNickname(@RequestParam("email") String email, Model model) {
-        //exception 처리 -> null 처리?
-        String nickname = memberService.findNicknameByEmail(email);
-        if (nickname != null) {
+        try {
+            String nickname = memberService.findNicknameByEmail(email);
             model.addAttribute("nickname", nickname);
+        }catch (CustomFormException e) {
+            model.addAttribute("message", e.getMessage());
         }
         return ("member/findNickname");
     }
+
+    @GetMapping("/findPassword")
+    public String findPassword() {
+        return ("member/findPassword");
+    }
+
+    @PostMapping("/findPassword")
+    public String sendEmail(@RequestParam("nickname") String nickname, Model model) {
+        try {
+            String email = memberService.findEmailByNickname(nickname);
+            MailDto dto = memberService.createMailAndChangePassword(email);
+            memberService.mailSend(dto);
+            return "redirect:/";
+        } catch (CustomFormException e) {
+            model.addAttribute("message", e.getMessage());
+        }
+        return "member/findPassword";
+    }
+
 
     @GetMapping("member/{memberId}")
     @PreAuthorize("#memberId == authentication.principal.id")

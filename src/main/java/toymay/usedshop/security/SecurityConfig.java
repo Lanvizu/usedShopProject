@@ -11,10 +11,19 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.stereotype.Component;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Configuration
 @RequiredArgsConstructor
@@ -24,9 +33,10 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfig {
 
     private final UserDetailService userDetailsService;
+    private final CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
     @Bean
-    public BCryptPasswordEncoder passwordEncoder() {
+    public static BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -47,14 +57,33 @@ public class SecurityConfig {
                 .loginPage("/")
                 .usernameParameter("nickname")
                 .passwordParameter("password")
-                .loginProcessingUrl("/login")//로그인 넣으면 ?error로 연결 없으면 넘어가질않음.
+                .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/mainPage")
+                .failureHandler(customAuthenticationFailureHandler)
                 .permitAll()
             .and()
+
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);//세션무효화
         return http.build();
+    }
+    /**
+     * 로그인 성공 후 처리
+     */
+    @Component
+    public static class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
+
+        @Override
+        public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+            String errorMessage = "로그인에 실패하였습니다. 다시 시도해주세요.";
+
+            // 에러 메시지를 Model에 추가
+            request.setAttribute("errorMessage", errorMessage);
+
+            // 로그인 페이지로 리다이렉트
+            request.getRequestDispatcher("/").forward(request, response);
+        }
     }
 }

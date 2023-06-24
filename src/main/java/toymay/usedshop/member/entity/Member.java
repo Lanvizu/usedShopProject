@@ -78,7 +78,6 @@ public class Member {
     public void updatePrivacy(String email, String phoneNumber) {
         this.privacy.setEmail(email);
         this.privacy.setPhoneNumber(phoneNumber);
-
     }
 
     public void addPost(Post post) {

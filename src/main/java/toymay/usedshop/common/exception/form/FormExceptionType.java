@@ -13,19 +13,19 @@ import toymay.usedshop.common.exception.form.signUp.TotalExceptionMessage;
 @RequiredArgsConstructor
 public enum FormExceptionType {
         //로그인 관련 에러
-//        NOT_FOUND_ACCOUNT_BY_NICKNAME(new NotFoundAccountByNicknameException(
-//                "입력한 사용자 이름을 사용하는 계정을 찾을 수 없습니다. 사용자 이름을 확인하고 다시 시도하세요.",
-//                "signInId", "incorrect")),
-//        NOT_FOUND_ACCOUNT_BY_Email(new NotFoundAccountByEmailException(
-//                "입력한 이메일을 사용하는 계정을 찾을 수 없습니다. 사용자의 이메일을 확인하고 다시 시도하세요.",
-//                "signInId", "incorrect")),
-//        NOT_FOUND_ACCOUNT_BY_Phone_Number(new NotFoundAccountByPhoneNumberException(
-//                "입력한 휴대폰 번호를 사용하는 계정을 찾을 수 없습니다. 사용자의 휴대폰 번호를 확인하고 다시 시도하세요.",
-//                "password", "incorrect")),
-//        INCORRECT_PASSWORD(new IncorrectPasswordException(
-//                "잘못된 비밀번호입니다. 다시 확인하세요.", "password", "incorrect")),
-//
-//        // 회원가입 관련 에러
+        NOT_FOUND_ACCOUNT_BY_NICKNAME(new TotalExceptionMessage(
+                "입력한 아이디를 사용하는 계정을 찾을 수 없습니다. 사용자 아이디를 확인하고 다시 시도하세요.",
+                "nickname", "incorrect")),
+        NOT_FOUND_ACCOUNT_BY_Email(new TotalExceptionMessage(
+                "입력한 이메일을 사용하는 계정을 찾을 수 없습니다. 사용자의 이메일을 확인하고 다시 시도하세요.",
+                "email", "incorrect")),
+        NOT_FOUND_ACCOUNT_BY_Phone_Number(new TotalExceptionMessage(
+                "입력한 휴대폰 번호를 사용하는 계정을 찾을 수 없습니다. 사용자의 휴대폰 번호를 확인하고 다시 시도하세요.",
+                "password", "incorrect")),
+        INCORRECT_PASSWORD(new TotalExceptionMessage(
+                "잘못된 비밀번호입니다. 다시 확인하세요.", "password", "incorrect")),
+
+        // 회원가입 관련 에러
         DUPLICATE_NICKNAME(new DuplicateNicknameException(
                 "다른 계정에서 이미 사용중인 닉네임입니다.", "nickname", "duplicate")),
         DUPLICATE_EMAIL(new DuplicateEmailException(

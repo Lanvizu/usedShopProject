@@ -17,8 +17,8 @@
 <div class="basic" th:if="${nickname}">
   등록된 아이디는 <span th:text="${nickname}"></span> 입니다.
 </div>
-<div class="basic" th:unless="${nickname}">
-  아이디가 없습니다.
+<div class="basic" th:if="${message}">
+  <span th:text="${message}"></span>
 </div>
 <div class="basic">
   <a class="option" href="/">로그인</a>

@@ -18,6 +18,9 @@
             <button class="input-submit" type="submit">Login</button>
         </div>
     </form>
+    <div th:if="${errorMessage}">
+        <p th:text="${errorMessage}" class="error-message"></p>
+    </div>
     <div class="links">
         <a href="/signUp">회원가입</a>
         <a href="/findNickname">아이디 찾기</a>
