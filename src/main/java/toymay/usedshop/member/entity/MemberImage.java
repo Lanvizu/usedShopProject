@@ -23,6 +23,8 @@ public class MemberImage {
 
     private String uploadFileName;
     private String storeFileName;
+
+    @Column(length = 20)
     private String extension;
 
     public MemberImage(String uploadFileName, String storeFileName, String extension) {

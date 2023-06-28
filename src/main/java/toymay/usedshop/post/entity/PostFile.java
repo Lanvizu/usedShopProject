@@ -26,6 +26,8 @@ public class PostFile {
 
     private String uploadFileName;
     private String storeFileName;
+
+    @Column(length = 20)
     private String extension;
 
     protected void setPost(Post post) {

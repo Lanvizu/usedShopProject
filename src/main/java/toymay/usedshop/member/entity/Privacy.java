@@ -5,6 +5,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 import static toymay.usedshop.common.exception.form.FormExceptionType.INVALID_EMAIL;
@@ -16,8 +17,13 @@ import static toymay.usedshop.common.exception.form.FormExceptionType.INVALID_PH
 @EqualsAndHashCode
 public class Privacy {
 
+    @Column(length = 100)
     private String password;
+
+    @Column(length = 11)
     private String phoneNumber;
+
+    @Column(length = 80)
     private String email;
 
 

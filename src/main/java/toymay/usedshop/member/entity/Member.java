@@ -26,9 +26,13 @@ public class Member {
     @Embedded
     private Privacy privacy;
 
+    @Column(length = 30)
     private String name;
+
+    @Column(length = 30)
     private String nickname;
 
+    @Column(length = 10)
     private String auth; //USER, ADMIN
 
     @OneToOne(mappedBy = "member", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)

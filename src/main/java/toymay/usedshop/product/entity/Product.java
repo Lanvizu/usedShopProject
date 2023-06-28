@@ -24,12 +24,14 @@ public class Product {
     @JoinColumn(name ="post_id")
     private Post post;
 
+    @Column(length = 50)
     private String name;
     private int salePrice;
     private int registrationPrice;
     private Long buyerId;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 10)
     private ProductStatus status; // 주문상태 [SoldOut,OnSale]
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
