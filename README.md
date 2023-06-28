@@ -30,3 +30,4 @@
 <br/>
 
 ## 🍳 ERD 테이블
+![erd table 1](https://github.com/Lanvizu/usedShopProject/assets/121706341/8e144c70-042b-474b-9676-c312107a594b)
