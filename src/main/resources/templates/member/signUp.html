@@ -32,7 +32,7 @@
         <button class="input-submit" type="submit"> 가입 </button>
 
         <div th:if="${#fields.hasAnyErrors()}">
-            <p class="form-error" th:each="err : ${#fields.allErrors()}"
+            <p class="error-message" th:each="err : ${#fields.allErrors()}"
                th:text="${err}">에러 메세지</p>
         </div>
     </form>

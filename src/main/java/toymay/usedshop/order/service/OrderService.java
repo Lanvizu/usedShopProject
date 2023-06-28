@@ -28,7 +28,6 @@ public class OrderService {
     private final ProductRepository productRepository;
     private final OrderRepository orderRepository;
 
-
     @Transactional
     public Long saveOrder(OrderDto orderDto) {
         Long memberId = orderDto.getMemberId();
@@ -66,25 +65,8 @@ public class OrderService {
 
     @Transactional
     public void cancelOrder(Long orderId) {
-//        Order order = orderRepository.findById(orderId).orElseThrow();
         orderRepository.deleteById(orderId);
     }
-
-//    @Transactional
-//    public List<OrderDto> findOrderDtosByProductId(Long productId) {
-//        Product product = productRepository.findById(productId).orElseThrow();
-//        List<Order> orders = product.getOrders();
-//        List<OrderDto> orderDtos = OrderDto.orderDtos(orders);
-//        return orderDtos;
-//    }
-//    @Transactional
-//    public void approveBidPrice(OrderDto orderDto) {
-//        Product product = productRepository.findById(orderDto.getProductId()).orElseThrow();
-//        product.setSalePrice(orderDto.getBidPrice());
-//        product.setStatus(ProductStatus.SoldOut);
-//        product.setBuyerId(orderDto.getMemberId());
-//        productRepository.save(product);
-//    }
 
     @Transactional
     public void approveBidPrice(OrderIdDto orderIdDto) {

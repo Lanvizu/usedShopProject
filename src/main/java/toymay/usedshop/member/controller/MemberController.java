@@ -32,7 +32,12 @@ public class MemberController {
     private final PostService postService;
 
     @GetMapping("/")
-    public String main() {
+    public String main(
+//            @RequestParam(value = "errorMessage", required = false) String errorMessage,
+            Model model, HttpServletRequest request) {
+        String errorMessage = (String) request.getSession().getAttribute("errorMessage");
+        model.addAttribute("errorMessage", errorMessage);
+
         return ("member/main");
     }
 

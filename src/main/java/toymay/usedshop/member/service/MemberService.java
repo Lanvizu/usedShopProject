@@ -172,14 +172,6 @@ public class MemberService {
     }
 
     @Transactional
-    public FileDto findImageById(Long memberId) {
-        Member member = memberRepository.findById(memberId).orElseThrow();
-        MemberImage memberImage = member.getMemberImage();
-        FileDto dto = FileDto.toDto(memberImage);
-        return dto;
-    }
-
-    @Transactional
     public void changeMemberImage(MultipartFile imageFile, Long memberId) throws IOException {
         Member member = memberRepository.findById(memberId).orElseThrow();
         FileDto dto = fileManager.storeImageFile(imageFile);
@@ -187,8 +179,4 @@ public class MemberService {
         member.changeProfileImage(memberImage);
         memberRepository.save(member);
     }
-
-//    @Transactional
-//    public void findMemberIdByPostId(Long postId) {
-//    }
 }

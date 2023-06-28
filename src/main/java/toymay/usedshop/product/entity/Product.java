@@ -29,16 +29,11 @@ public class Product {
     private int registrationPrice;
     private Long buyerId;
 
-
     @Enumerated(EnumType.STRING)
     private ProductStatus status; // 주문상태 [SoldOut,OnSale]
 
     @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private final List<Order> orders = new ArrayList<>();
-
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name ="order_id")
-//    private Order order;
 
     public Product(Post post, String name, int registrationPrice) {
         this.post = post;

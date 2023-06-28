@@ -115,7 +115,7 @@ label {
 /*    margin-top: 10px;*/
 /*    margin-bottom: 20px;*/
 /*}*/
-.form-error {
+.error-message {
     color: #ED4956;
     margin-bottom: 10px;
     font-weight: bold;

@@ -27,23 +27,10 @@ public class UserDetail implements UserDetails {
         return member.getId();
     }
 
-
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        Collection<GrantedAuthority> collection = new ArrayList<>();
-//        collection.add(new SimpleGrantedAuthority(member.getAuth()));
-//        return collection;
-////        return getAuthorities();
-//    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return authorities;
     }
-//    @Override
-//    public List<GrantedAuthority> getAuthorities() {
-//        return new ArrayList<>(authorities);
-//    }
 
     @Override
     public String getPassword() {

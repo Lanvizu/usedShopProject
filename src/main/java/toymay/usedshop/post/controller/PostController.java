@@ -140,9 +140,7 @@ public class PostController {
         return ("redirect:/post/{postId}");
     }
 
-
     @GetMapping("post/{postId}/update")
-//    @PreAuthorize("#postId == authentication.principal.id")
     public String updatePostPage(@PathVariable("postId") Long postId, Model model,
                                  RedirectAttributes redirectAttributes) {
 
@@ -161,7 +159,6 @@ public class PostController {
         }
 
         model.addAttribute("PostSaveForm", new PostSaveForm());
-
         return ("post/updatePost");
     }
 

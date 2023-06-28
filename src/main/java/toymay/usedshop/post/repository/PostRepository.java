@@ -9,5 +9,6 @@ import java.util.List;
 
 @Repository
 public interface PostRepository extends JpaRepository<Post,Long> {
+    //역순 배열
     List<Post> findAllByOrderByIdDesc();
 }

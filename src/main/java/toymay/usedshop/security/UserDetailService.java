@@ -20,16 +20,6 @@ public class UserDetailService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
 
-//    @Override
-//    public UserDetails loadUserByUsername(String nickname) throws UsernameNotFoundException {
-//        //exception 처리해주기
-//        Member member = memberRepository.findByNickname(nickname).orElseThrow(()
-//                -> new UsernameNotFoundException("not found Nickname : " + nickname));
-//        List<GrantedAuthority> authorities = new ArrayList<>();
-//        authorities.add(new SimpleGrantedAuthority("ROLE_" + member.getAuth()));
-//        return new UserDetail(member);
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String nickname) throws UsernameNotFoundException {
         Member member = memberRepository.findByNickname(nickname)

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -28,7 +29,6 @@ import java.io.IOException;
 @Configuration
 @RequiredArgsConstructor
 @EnableWebSecurity
-//PreAuthorize 를 구현하기위해
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
 
@@ -50,40 +50,23 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/", "/signUp", "/findPassword", "/findNickname", "/css/**", "/js/**", "/profileImg/**").permitAll()
+                .antMatchers("/", "/signUp", "/findPassword",
+                        "/findNickname", "/css/**", "/js/**", "/profileImg/**").permitAll()
                 .anyRequest().authenticated()
-            .and()
-                .formLogin()
+                .and()
+            .formLogin()
                 .loginPage("/")
                 .usernameParameter("nickname")
                 .passwordParameter("password")
                 .loginProcessingUrl("/login")
-                .defaultSuccessUrl("/mainPage")
                 .failureHandler(customAuthenticationFailureHandler)
+                .defaultSuccessUrl("/mainPage")
                 .permitAll()
-            .and()
-
-                .logout()
+                .and()
+            .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);//세션무효화
         return http.build();
-    }
-    /**
-     * 로그인 성공 후 처리
-     */
-    @Component
-    public static class CustomAuthenticationFailureHandler implements AuthenticationFailureHandler {
-
-        @Override
-        public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-            String errorMessage = "로그인에 실패하였습니다. 다시 시도해주세요.";
-
-            // 에러 메시지를 Model에 추가
-            request.setAttribute("errorMessage", errorMessage);
-
-            // 로그인 페이지로 리다이렉트
-            request.getRequestDispatcher("/").forward(request, response);
-        }
     }
 }

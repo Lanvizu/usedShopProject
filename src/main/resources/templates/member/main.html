@@ -18,8 +18,8 @@
             <button class="input-submit" type="submit">Login</button>
         </div>
     </form>
-    <div th:if="${errorMessage}">
-        <p th:text="${errorMessage}" class="error-message"></p>
+    <div class="basic" th:if="${errorMessage}">
+        <p class="error-message" th:text="${errorMessage}"></p>
     </div>
     <div class="links">
         <a href="/signUp">회원가입</a>
