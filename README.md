@@ -73,5 +73,11 @@
     <p align="center">
     <img src="https://user-images.githubusercontent.com/121706341/269232381-77a54b8c-9818-4325-abd6-8f471b110fe3.gif">
     </p>
+    🍳 경매가 입력, 취소
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/121706341/269234789-a6b6e0d7-826a-4df3-a8fd-4864ae4860f2.gif">
+    </p>
+
+
 </details>
 
