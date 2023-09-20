@@ -82,6 +82,74 @@
     <img src="https://user-images.githubusercontent.com/121706341/269257307-4e9f012e-242a-4db3-adcb-7dd78959c433.gif">
     </p>
 
+</details>
+
+## 🍳 마주했던 이슈들
+
+<details>
+  <summary>SpringSecurity 문제</summary>
+  <br/>
+  
+  로그인 과정에 보안을 생각해 SpringSecurity를 통해 진행했다. 
+  
+  비밀번호를 암호화하지않고 저장해 로그인이 실행되지 않은 에러 등 여러가지가 있었다...
+
+  >수많은 에러로 인해 구글링과 공식문서로 공부하면서 문제를 해결했다.
+  
+  [에러 벨로그](https://velog.io/@lanvizu/%EC%BD%94%EB%94%A9-%EC%9D%BC%EA%B8%B023-05-15)
+</details>
+
+<details>
+  <summary>이메일 인증을 통한 비밀번호 재설정</summary>
+  <br/>
+  저번 프로젝트에서 진행하지 못했던 비밀번호 재설정 문제를 이메일을 통한 방법으로 해결했다.
+  
+  SpringSecurity를 사용할 때 단점 중 하나인 암호화된 비밀번호를 복호화하지 못하는 문제가 있었다.
+
+  >Spring Boot Mail을 통해 이메일 발송을 확인했으며 정상적으로 비밀번호가 재설정된다.
+
+  [에러 벨로그](https://velog.io/@lanvizu/%EC%BD%94%EB%94%A9-%EC%9D%BC%EA%B8%B023-05-21)
+</details>
+
+<details>
+  <summary>Dto 사용해 데이터를 전달</summary>
+  <br/>
+  
+  LazyInitializationException 에러 - 세션 종료와 세션 범위를 벗어난 상태에서 지연 로딩 발생했다.
+
+  해당 에러 덕분에 Dto에 대해 공부하고 그 중요성을 알게되었다.
+
+  >모든 데이터는 Dto를 통해 전달되도록 코드를 수정했으며 정상적으로 데이터를 전달한다.
+
+  [에러 벨로그](https://velog.io/@lanvizu/%EC%BD%94%EB%94%A9%EC%9D%BC%EA%B8%B023-05-27)
+</details>
+
+<details>
+  <summary>LocalDateTime을 이용해 시간 표현</summary>
+  <br/>
+
+  포스팅 부분에 몇 분전 글을 작성했는지 표시가 되지않아 식별이 불가한 문제가 발생했다.
+
+  LocalDateTime를 공부해 javaScript를 통해 표현하려 했지만 공부하지 못한 부분이라 어려움이 있었다.
+
+  >@EnableJpaAuditing를 통해 자동으로 생성과 수정 시간을 설정하도록 해결했습니다.
+
+  [에러 벨로그](https://velog.io/@lanvizu/%EC%BD%94%EB%94%A9%EC%9D%BC%EA%B8%B023-06-16)
+
+</details>
+
+🍳 **부족한 부분**
+<details>
+  <summary>트랜잭션</summary>
+  <br/>
+
+  이번 프로젝트에선 예외처리를 Throw로 던지는 쪽으로 회피하면서 코드를 작성했다.
+
+  트랜잭션에 대해서 공부를 하고서 코드를 다시보니 예외 처리 부분에 많은 문제가 있어보였다.
+
+  >예외 처리를 Checked와 Unchecked로 나눠 명확한 메세지를 통해 예외처리하는 부분이 필요하다고 느낀다.
+
+  [트랜잭션 벨로그](https://velog.io/@lanvizu/%EC%BD%94%EB%94%A9%EC%9D%BC%EA%B8%B023-06-22)
 
 </details>
 
