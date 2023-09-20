@@ -60,3 +60,14 @@
 
 ## 🍳 ERD 테이블
 ![erd table 1](https://github.com/Lanvizu/usedShopProject/assets/121706341/8e144c70-042b-474b-9676-c312107a594b)
+
+## 🍳 Priview
+
+<details>
+    <summary>자세히</summary>
+    회원가입
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/121706341/269230037-c6e8d2ee-f4be-416f-a2b2-bb74b5e72ddb.gif">
+    </p>
+</details>
+
