@@ -1,4 +1,4 @@
-# usedShopProject (중고경매 프로젝트)
+# UsedShopProject (중고경매 프로젝트)
 
 ## 🍳 Intro
 - Spring, Jpa, 클론코딩 공부 후 두번째 개인 프로젝트
@@ -12,7 +12,11 @@
 
 ## 🍳 사용 기술
 **1. Back-End**
-<img src="https://img.shields.io/badge/v11?style=flat&logo=Java&logoColor=white"/>
+<div align="center">
+	<img src="https://img.shields.io/badge/Java-007396?style=flat&logo=Java&logoColor=white" />
+	<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=HTML5&logoColor=white" />
+	<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=CSS3&logoColor=white" />
+</div>
 - Java 11
 - Spring Data JPA
 - Spring Boot 2.7.11
