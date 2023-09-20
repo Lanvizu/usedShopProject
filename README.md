@@ -12,6 +12,7 @@
 
 ## 🍳 사용 기술
 **1. Back-End**
+<img src="https://img.shields.io/badge/v11?style=flat&logo=Java&logoColor=white"/>
 - Java 11
 - Spring Data JPA
 - Spring Boot 2.7.11
