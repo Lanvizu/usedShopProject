@@ -77,6 +77,10 @@
     <p align="center">
     <img src="https://user-images.githubusercontent.com/121706341/269234789-a6b6e0d7-826a-4df3-a8fd-4864ae4860f2.gif">
     </p>
+    🍳 판매 물건 등록
+    <p align="center">
+    <img src="https://user-images.githubusercontent.com/121706341/269257307-4e9f012e-242a-4db3-adcb-7dd78959c433.gif">
+    </p>
 
 
 </details>
